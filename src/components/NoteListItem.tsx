@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import type { Note } from "../types";
-import ContextMenu from "./ContextMenu";
+import ContextMenu, { type MenuItem } from "./ContextMenu";
 
 type Props = {
   note: Note;
@@ -40,7 +40,7 @@ const NoteListItem = ({ note, active, onClick, onDelete, onPin }: Props) => {
     setContextMenu({ x: e.clientX, y: e.clientY });
   };
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { label: note.pinned ? "Unpin" : "Pin", action: () => onPin?.() },
     { separator: true },
     { label: "Delete", action: () => onDelete?.() },

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-type MenuItem = 
+export type MenuItem = 
   | {
       label: string;
       action: () => void;
