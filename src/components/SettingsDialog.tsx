@@ -410,7 +410,7 @@ export default function SettingsDialog({ isOpen, onClose, currentTheme, onThemeC
                 <div className="desk-panel p-4 space-y-3">
                   <div>
                     <div className="text-2xl font-semibold mb-2" style={{ color: "var(--text-main)" }}>
-                      ✏️ Parcel
+                      ✉️ Parcel
                     </div>
                     <p className="text-sm" style={{ color: "var(--text-muted)" }}>
                       A warm, local note-taking app. Your notes stay on your device.

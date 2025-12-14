@@ -87,7 +87,7 @@ export default function NoteCard() {
   if (!note) {
     return (
       <div className="max-w-3xl mx-auto mt-16 text-center px-4">
-        <div className="text-6xl mb-4">✏️</div>
+        <div className="text-6xl mb-4">✉️</div>
         <div className="text-lg font-medium mb-2" style={{ color: "var(--text-main)" }}>
           Welcome to Parcel
         </div>

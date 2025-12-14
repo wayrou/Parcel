@@ -17,7 +17,7 @@ export default function HeaderBar({ onOpenSettings, onToggleTheme, title, showSe
     <header className="h-12 flex items-center justify-between px-6 header-bar">
       <div className="flex items-center gap-3">
         <div className="font-semibold" style={{ color: "var(--text-main)" }}>
-          ✏️ {appTitle}
+          ✉️ {appTitle}
         </div>
         <div className="text-xs hidden sm:block" style={{ color: "var(--text-muted)" }}>
           warm, local notes
