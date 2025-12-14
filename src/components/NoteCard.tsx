@@ -18,7 +18,7 @@ const COLOR_CLASS: Record<string, string> = {
 };
 
 export default function NoteCard() {
-  const { selectedNote, updateNote, deleteNote, selectedNoteId, folders, canUndo, canRedo, undo, redo } = useNotesStore();
+  const { selectedNote, updateNote, deleteNote, selectedNoteId, folders, undo, redo } = useNotesStore();
   const note = selectedNote();
   const [isMounted, setIsMounted] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);

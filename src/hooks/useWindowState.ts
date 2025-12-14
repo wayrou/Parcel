@@ -28,7 +28,7 @@ export function useWindowState() {
 
     const restoreWindowState = async () => {
       try {
-        const { getCurrentWindow } = await import("@tauri-apps/api/window");
+        const { getCurrentWindow, LogicalSize, LogicalPosition } = await import("@tauri-apps/api/window");
         const appWindow = getCurrentWindow();
         
         // Restore window size and position from localStorage
@@ -42,11 +42,11 @@ export function useWindowState() {
           const isValidSize = width >= 400 && width <= 10000 && height >= 300 && height <= 10000;
           
           if (isValidSize) {
-            await appWindow.setSize({ width, height });
+            await appWindow.setSize(new LogicalSize(width, height));
           }
           
           if (isValidPosition) {
-            await appWindow.setPosition({ x, y });
+            await appWindow.setPosition(new LogicalPosition(x, y));
           } else {
             // If position is invalid, center the window on screen
             try {

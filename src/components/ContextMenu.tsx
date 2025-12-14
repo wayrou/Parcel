@@ -1,11 +1,18 @@
 import { useEffect, useRef } from "react";
 
-type MenuItem = {
-  label: string;
-  action: () => void;
-  disabled?: boolean;
-  separator?: boolean;
-};
+type MenuItem = 
+  | {
+      label: string;
+      action: () => void;
+      disabled?: boolean;
+      separator?: false;
+    }
+  | {
+      separator: true;
+      label?: never;
+      action?: never;
+      disabled?: never;
+    };
 
 type Props = {
   isOpen: boolean;
@@ -86,4 +93,5 @@ export default function ContextMenu({ isOpen, x, y, items, onClose }: Props) {
     </div>
   );
 }
+
 

@@ -5,7 +5,7 @@ export function useDebouncedEffect(
   deps: unknown[],
   delayMs: number
 ) {
-  const cleanupRef = useRef<void | (() => void)>();
+  const cleanupRef = useRef<void | (() => void) | undefined>(undefined);
   useEffect(() => {
     const t = window.setTimeout(() => {
       if (cleanupRef.current) cleanupRef.current();

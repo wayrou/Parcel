@@ -4,13 +4,12 @@ type Props = {
   onOpenSettings?: () => void;
   onToggleTheme?: () => void;
   title?: string;
-  showSettings?: boolean;
   onToggleSettings?: () => void;
   sidebarCollapsed?: boolean;
   onToggleSidebar?: () => void;
 };
 
-export default function HeaderBar({ onOpenSettings, onToggleTheme, title, showSettings, onToggleSettings, sidebarCollapsed, onToggleSidebar }: Props) {
+export default function HeaderBar({ onOpenSettings, onToggleTheme, title, onToggleSettings, sidebarCollapsed, onToggleSidebar }: Props) {
   const appTitle = useMemo(() => title ?? "Parcel", [title]);
 
   return (
