@@ -59,7 +59,7 @@ export default function App() {
 
     import('@tauri-apps/api/window').then(async ({ getCurrentWindow }) => {
       const appWindow = getCurrentWindow();
-      unlisten = await appWindow.onCloseRequested(async (event) => {
+      unlisten = await appWindow.onCloseRequested(async () => {
         // If we have unsaved changes (technically we always might with store), try to save
         try {
           // We can't easily check "dirty" here without store access, but saveToDisk is fast
