@@ -49,13 +49,13 @@ export default function NoteCard() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const isMod = e.metaKey || e.ctrlKey;
-      
+
       // ⌘P / Ctrl+P: Toggle pin
       if (isMod && e.key === 'p' && !e.shiftKey) {
         e.preventDefault();
         updateNote(note.id, { pinned: !note.pinned });
       }
-      
+
       // ⌘⌫ / Ctrl+Backspace: Delete note
       if (isMod && (e.key === 'Backspace' || e.key === 'Delete')) {
         e.preventDefault();
@@ -92,7 +92,7 @@ export default function NoteCard() {
           Welcome to Parcel
         </div>
         <div className="text-sm mb-6" style={{ color: "var(--muted)" }}>
-          Create or select a note to begin writing
+          Select or create a note
         </div>
         <div className="text-xs" style={{ color: "var(--muted)", opacity: 0.7 }}>
           Press {modKey}+N to create a new note
@@ -111,9 +111,9 @@ export default function NoteCard() {
         {/* Toolbar strip */}
         <div className="flex items-center justify-end gap-1 mb-6">
           <div className="toolbar-strip flex items-center gap-1">
-            <button 
-              type="button" 
-              className="btn-icon" 
+            <button
+              type="button"
+              className="btn-icon"
               title={`${note.pinned ? "Unpin" : "Pin"} (${modKey}+P)`}
               onClick={() => updateNote(note.id, { pinned: !note.pinned })}
             >
@@ -148,9 +148,9 @@ export default function NoteCard() {
               <option value="sky">Sky</option>
             </select>
 
-            <button 
-              type="button" 
-              className="btn-icon" 
+            <button
+              type="button"
+              className="btn-icon"
               title={`Delete note (${modKey}+⌫)`}
               onClick={() => setShowDeleteConfirm(true)}
             >
@@ -165,10 +165,7 @@ export default function NoteCard() {
           type="text"
           value={note.title}
           onChange={(e) => {
-            // Use requestAnimationFrame to prevent UI jank while typing
-            requestAnimationFrame(() => {
-              updateNote(note.id, { title: e.target.value });
-            });
+            updateNote(note.id, { title: e.target.value });
           }}
           onKeyDown={(e) => {
             // Tab or Enter moves focus to body
@@ -187,13 +184,10 @@ export default function NoteCard() {
           ref={bodyTextareaRef}
           value={note.body}
           onChange={(e) => {
-            // Use requestAnimationFrame to prevent UI jank while typing
-            requestAnimationFrame(() => {
-              updateNote(note.id, { body: e.target.value });
-            });
+            updateNote(note.id, { body: e.target.value });
           }}
           className="w-full h-[70vh] bg-transparent border-0 p-0 rounded-none focus:shadow-none resize-none input-typography"
-          style={{ 
+          style={{
             color: "var(--text-main)",
             lineHeight: "1.7",
             fontSize: "1rem"

@@ -46,16 +46,16 @@ export default function Sidebar() {
       }
 
       const isMod = e.metaKey || e.ctrlKey;
-      
+
       // ⌘N / Ctrl+N: New note
       if (isMod && e.key === 'n' && !e.shiftKey) {
         e.preventDefault();
         createNote();
         return;
       }
-      
-      // ⌘K / Ctrl+K: Focus search
-      if (isMod && e.key === 'k') {
+
+      // ⌘K / Ctrl+K or ⌘F / Ctrl+F: Focus search
+      if (isMod && (e.key === 'k' || e.key === 'f')) {
         e.preventDefault();
         const searchInput = document.querySelector('.search-pill') as HTMLInputElement;
         searchInput?.focus();
@@ -70,7 +70,7 @@ export default function Sidebar() {
 
         // Use requestAnimationFrame to prevent blocking
         requestAnimationFrame(() => {
-          const currentIndex = selectedNoteId 
+          const currentIndex = selectedNoteId
             ? allNotes.findIndex(n => n.id === selectedNoteId)
             : -1;
 
@@ -83,7 +83,7 @@ export default function Sidebar() {
 
           if (allNotes[nextIndex]) {
             selectNote(allNotes[nextIndex].id);
-            
+
             // Scroll selected note into view
             setTimeout(() => {
               const selectedElement = document.querySelector(`[data-note-id="${allNotes[nextIndex].id}"]`);
@@ -93,13 +93,13 @@ export default function Sidebar() {
         });
         return;
       }
-      
+
       // Home/End keys for first/last note
       if (e.key === 'Home' || e.key === 'End') {
         e.preventDefault();
         const allNotes = [...pinned, ...others];
         if (allNotes.length === 0) return;
-        
+
         requestAnimationFrame(() => {
           const targetIndex = e.key === 'Home' ? 0 : allNotes.length - 1;
           if (allNotes[targetIndex]) {
@@ -125,11 +125,11 @@ export default function Sidebar() {
   }, [createNote, pinned, others, selectedNoteId, selectNote]);
 
   return (
-    <aside 
+    <aside
       className="sidebar"
-      style={{ 
-        width: '20rem', 
-        flexShrink: 0, 
+      style={{
+        width: '20rem',
+        flexShrink: 0,
         flexGrow: 0,
         flexBasis: '20rem',
         height: '100%',
@@ -172,12 +172,12 @@ export default function Sidebar() {
         </div>
 
         {/* Primary action */}
-        <button 
-          type="button" 
+        <button
+          type="button"
           onClick={() => {
             createNote();
             // Note: Auto-focus is handled in NoteCard component via useEffect
-          }} 
+          }}
           className="w-full btn-primary mb-5"
           title={`${modKey}+N - Create and start typing instantly`}
         >
@@ -292,9 +292,9 @@ export default function Sidebar() {
                   {search ? "No notes found" : "No notes yet"}
                 </div>
                 <div className="text-xs">
-                  {search 
+                  {search
                     ? "Try a different search term"
-                    : `Press ${modKey}+N or click "New Note" to create your first note`
+                    : `Create your first note`
                   }
                 </div>
               </div>

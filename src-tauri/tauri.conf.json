@@ -12,9 +12,9 @@
   "app": {
     "windows": [
       {
-        "title": "parcel",
-        "width": 800,
-        "height": 600
+        "title": "Parcel",
+        "width": 1024,
+        "height": 768
       }
     ],
     "security": {
